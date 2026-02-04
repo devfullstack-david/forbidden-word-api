@@ -21,7 +21,7 @@ app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
 app.register(iamRoutes, {
-    prefix: '/api/iam'
+    prefix: '/api'
 })
 
 const start = async () => {

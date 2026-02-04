@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { IAMController } from "modules/iam/iam.controller.js";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import { LoginSchema } from "modules/iam/iam.types.js";
+import { LoginSchema, RegisterSchema } from "modules/iam/iam.types.js";
 
 const iamController = new IAMController()
 
@@ -15,4 +15,12 @@ export async function iamRoutes(app: FastifyInstance) {
     }, async (request, reply) => {
         return iamController.login(request, reply)
     });
+
+    api.post('/iam/register', {
+        schema: {
+            body: RegisterSchema
+        }
+    }, async (request, reply) => {
+        return iamController.register(request, reply)
+    })
 }
