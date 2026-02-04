@@ -1,5 +1,6 @@
 import fastify from "fastify";
 import { serializerCompiler, validatorCompiler, ZodTypeProvider } from "fastify-type-provider-zod";
+import { auth } from "infra/hooks/auth.js";
 import fastifyEnv from "@fastify/env";
 import { iamRoutes } from "routes/shared/iam.js";
 import { options } from "infra/config/environment.js";
@@ -26,6 +27,8 @@ app.register(iamRoutes, {
 const start = async () => {
     try {
         await app.register(fastifyEnv, options)
+
+        await app.register(auth)
 
         await app.listen({
             port: app.config.PORT,
