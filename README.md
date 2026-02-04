@@ -41,6 +41,7 @@ PORT=
 USER=
 PASSWORD=
 DATABASE=
+JWT_SECRET=
 ```
 
 > **Note**: These variables are essential for the database connection and server configuration.
